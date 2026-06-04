@@ -4,60 +4,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation - Sangavi & Adithya</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; font-family: 'Raleway', sans-serif; background: #fffaf0; color: #333; overflow-x: hidden; }
-        .bg-container { background: url('https://transparenttextures.com'), linear-gradient(135deg, #fff5f5 0%, #fffaf0 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .invite-card { background: white; max-width: 500px; width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #eee; text-align: center; position: relative; }
-        .photo-frame { width: 100%;  overflow: hidden; position: relative; }
-        .photo-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .invite-card:hover .photo-frame img { transform: scale(1.05); }
-        .content { padding: 40px 30px; }
-        h2 { font-family: 'Great Vibes', cursive; font-size: 48px; color: #b76e79; margin: 0; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 28px; margin: 15px 0; letter-spacing: 2px; text-transform: uppercase; color: #2c3e50; }
-        .and { font-family: 'Great Vibes', cursive; font-size: 32px; color: #b76e79; }
-        .intro-text { font-style: italic; font-size: 16px; line-height: 1.6; color: #666; margin-bottom: 25px; padding: 0 10px; }
-        .event-info { border-top: 1px solid #f1f1f1; border-bottom: 1px solid #f1f1f1; padding: 20px 0; margin-bottom: 30px; }
-        .info-item { margin: 10px 0; font-weight: 400; font-size: 18px; color: #444; }
-        .venue { font-weight: 700; color: #2c3e50; }
-        .btn-map { display: inline-block; background-color: #b76e79; color: white; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3); }
-        .btn-map:hover { background-color: #a65d68; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4); }
-        .footer { margin-top: 30px; font-size: 14px; color: #888; letter-spacing: 1px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .invitation-wrapper {
+            perspective: 1000px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .invitation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+        }
+
+        .invitation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Decorative Top Section */
+        .header-decoration {
+            background: linear-gradient(135deg, #d4a574 0%, #c9945f 100%);
+            height: 120px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-decoration::before,
+        .header-decoration::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .header-decoration::before {
+            top: 30%;
+        }
+
+        .header-decoration::after {
+            bottom: 30%;
+        }
+
+        .ornament {
+            font-size: 48px;
+            color: white;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Photo Section */
+        .photo-section {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .photo-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .invitation-card:hover .photo-section img {
+            transform: scale(1.08);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(201, 148, 95, 0.15) 100%);
+        }
+
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+            background: linear-gradient(to bottom, #ffffff 0%, #faf9f7 100%);
+            text-align: center;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .names-container {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .bride-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #d4a574;
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 44px;
+            color: #c9945f;
+            margin: 12px 0;
+            font-weight: 400;
+        }
+
+        .groom-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #d4a574;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .ceremony-title {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            color: #2c3e50;
+            margin: 35px 0 30px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #d4a574, transparent);
+            margin: 25px auto 30px;
+        }
+
+        /* Event Details */
+        .event-details {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(201, 148, 95, 0.08) 100%);
+            border-radius: 12px;
+            padding: 30px 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .detail-item {
+            margin: 16px 0;
+            font-size: 16px;
+            color: #444;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .detail-icon {
+            font-size: 18px;
+            margin-right: 12px;
+            color: #d4a574;
+        }
+
+        .venue-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 5px;
+        }
+
+        /* Bottom Quote */
+        .closing-quote {
+            font-style: italic;
+            font-size: 14px;
+            color: #8b7355;
+            margin: 30px 0 25px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Button */
+        .map-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a574 0%, #c9945f 100%);
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 165, 116, 0.5);
+            background: linear-gradient(135deg, #c9945f 0%, #b8844a 100%);
+        }
+
+        .map-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Hashtag */
+        .hashtag {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #d4a574;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .content {
+                padding: 35px 25px;
+            }
+
+            .bride-name,
+            .groom-name {
+                font-size: 42px;
+            }
+
+            .ceremony-title {
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+
+            .quote,
+            .closing-quote {
+                font-size: 13px;
+            }
+
+            .event-details {
+                padding: 20px 15px;
+            }
+
+            .detail-item {
+                font-size: 14px;
+            }
+        }
+
+        /* Animation on load */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .invitation-card {
+            animation: slideIn 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
     </style>
 </head>
 <body>
 
-<div class="bg-container">
-    <div class="invite-card">
-        <!-- Couple Photo Section -->
-        <div class="photo-frame">
-            <img src="IMG-20260604-WA0012.jpg" alt="Sangavi and Adithya">
+<div class="invitation-wrapper">
+    <div class="invitation-card">
+        <!-- Decorative Header -->
+        <div class="header-decoration">
+            <div class="ornament">💍</div>
         </div>
 
+        <!-- Photo Section -->
+        <div class="photo-section">
+            <img src="IMG-20260604-WA0012.jpg" alt="Sangavi and Adithya">
+            <div class="photo-overlay"></div>
+        </div>
+
+        <!-- Content Section -->
         <div class="content">
-            <p class="intro-text">"Two souls with but a single thought, two hearts that beat as one." <br>Together with our families, we invite you to celebrate our union.</p>
-            
-            <h2>Sangavi</h2>
-            <div class="and">&</div>
-            <h2>Adithya</h2>
-            
-            <h1>Wedding Ceremony</h1>
-            
-            <div class="event-info">
-                <div class="info-item">📅 August 27, 2024</div>
-                <div class="info-item">⏰ 10:30 AM</div>
-                <div class="info-item venue">📍 Abhimaani CONVENTION HALL</div>
-                <div class="info-item">Basaveshwara Nagar, Bengaluru</div>
+            <p class="quote">
+                "Two souls with but a single thought,<br>two hearts that beat as one."<br>
+                Together with our families, we invite you to celebrate our union.
+            </p>
+
+            <div class="names-container">
+                <div class="bride-name">Sangavi</div>
+                <div class="ampersand">&</div>
+                <div class="groom-name">Adithya</div>
             </div>
 
-            <p class="intro-text">Your presence and blessings mean the world to us as we begin our new journey together.</p>
-            
-            <!-- Google Maps Button -->
-            <a href="https://maps.app.goo.gl/ciQ8Z8VhPYyLWQyq6?g_st=ac" target="_blank" class="btn-map">
-                VIEW ON GOOGLE MAPS
+            <h1 class="ceremony-title">Wedding Ceremony</h1>
+            <div class="divider"></div>
+
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    August 27, 2024
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">⏰</span>
+                    10:30 AM
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span class="venue-name">Abhimaani CONVENTION HALL</span>
+                    <br>Basaveshwara Nagar, Bengaluru
+                </div>
+            </div>
+
+            <p class="closing-quote">
+                Your presence and blessings mean the world to us<br>as we begin our new journey together.
+            </p>
+
+            <a href="https://maps.app.goo.gl/ciQ8Z8VhPYyLWQyq6?g_st=ac" target="_blank" class="map-button">
+                View on Google Maps
             </a>
-            
-            <div class="footer">#SangaviWedsAdithya</div>
+
+            <div class="hashtag">#SangaviWedsAdithya</div>
         </div>
     </div>
 </div>
