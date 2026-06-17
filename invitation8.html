@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S & A Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #121416;
+            --text-main: #FFFFFF;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --serif-title: 'Italiana', serif;
+            --sans-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--sans-body);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Immersive Frame Container */
+        .stage-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 1200px;
+            max-height: 800px;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* Absolute Graphic Background Layout Elements */
+        .background-photo-container {
+            position: absolute;
+            right: 10%;
+            top: 10%;
+            width: 45%;
+            height: 80%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .background-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        /* Large Ambient Typography behind layout elements */
+        .huge-background-text {
+            position: absolute;
+            left: 5%;
+            top: 5%;
+            font-family: var(--serif-title);
+            font-size: clamp(6rem, 15vw, 12rem);
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Forefront Content Architecture */
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            pointer-events: none;
+        }
+
+        .left-col {
+            pointer-events: auto;
+            align-self: center;
+        }
+
+        .editorial-title {
+            font-family: var(--serif-title);
+            font-size: clamp(3.5rem, 6vw, 6rem);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .right-col {
+            pointer-events: auto;
+            background: rgba(18, 20, 22, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-left: 2px solid #fff;
+            align-self: end;
+            max-width: 460px;
+            justify-self: end;
+            margin-top: 10rem;
+        }
+
+        .section-header {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-details-block {
+            margin-bottom: 2.5rem;
+        }
+        .event-details-block:last-of-type { margin-bottom: 0; }
+
+        .event-name {
+            font-family: var(--serif-title);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .event-time-string {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .event-location-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .event-location-text strong { color: var(--text-main); }
+
+        .action-arrow-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: #FFF;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .action-arrow-link:hover { text-decoration: underline; }
+
+        /* Media Queries for Screen Adjustments */
+        @media (max-width: 768px) {
+            body { overflow-y: auto; }
+            .stage-wrapper {
+                height: auto;
+                max-height: none;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .background-photo-container {
+                position: relative;
+                width: 100%;
+                height: 45vh;
+                top: 0; right: 0;
+            }
+            .content-overlay {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: -3rem;
+            }
+            .right-col {
+                margin-top: 0;
+                padding: 2rem 1.5rem;
+            }
+            .huge-background-text { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="huge-background-text">CELEBRATE</div>
+
+    <div class="stage-wrapper">
+        
+        <!-- Deep Fixed Image Windows Frame Placement -->
+        <div class="background-photo-container">
+            <img src="cupple.jpg" alt="Sangavi & Adithya Image Portfolio">
+        </div>
+
+        <!-- Overlaid text interaction layer -->
+        <div class="content-overlay">
+            
+            <div class="left-col">
+                <h1 class="editorial-title">
+                    Sangavi<br>
+                    & Adithya
+                </h1>
+                <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 320px; line-height: 1.8; font-weight: 200;">
+                    We invite you to share with us the unique beginning of our new life together.
+                </p>
+            </div>
+
+            <div class="right-col">
+                <div class="section-header">The Itinerary</div>
+                
+                <!-- Ceremony Info -->
+                <div class="event-details-block">
+                    <h2 class="event-name">The Wedding</h2>
+                    <div class="event-time-string">27 . 08 . 2024 — 10:30 AM</div>
+                    <p class="event-location-text">
+                        Held at <strong>Abhimaani Convention Hall</strong><br>
+                        Basaveshwara Nagar, Bengaluru
+                    </p>
+                    <a href="https://maps.app.goo.gl/ciQ8Z8VhPYyLWQyq6?g_st=ac" target="_blank" class="action-arrow-link">View Route →</a>
+                </div>
+
+                <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.1); margin: 2rem 0;">
+
+                <!-- Reception Info -->
+                <div class="event-details-block">
+                    <h2 class="event-name">The Reception</h2>
+                    <div class="event-time-string">[DATE] — [TIME]</div>
+                    <p class="event-location-text">
+                        Held at <strong>[Insert Reception Venue Name]</strong><br>
+                        [Insert Location details]
+                    </p>
+                    <a href="#" class="action-arrow-link">View Route →</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

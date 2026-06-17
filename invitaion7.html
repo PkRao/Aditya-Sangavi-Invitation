@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Sangavi & Adithya</title>
+    <!-- Avant-Garde & High-End Editorial Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0A0A0A;
+            --text-primary: #F5F5F7;
+            --text-secondary: #8E8E93;
+            --accent: #E5A93C;
+            --font-serif: 'Bodoni Moda', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* The Core Structural Shift: The Split Screen Layout */
+        .split-layout {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* LEFT SIDE: Fixed Editorial Visual Frame */
+        .visual-pane {
+            width: 45%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #111;
+        }
+
+        .visual-pane img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(15%) contrast(105%);
+            transition: transform 1.5s ease;
+        }
+
+        /* Subtle vignette overlay for depth */
+        .visual-pane::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, transparent 70%, var(--bg-color));
+        }
+
+        /* RIGHT SIDE: Scrolling Canvas */
+        .content-pane {
+            width: 55%;
+            margin-left: 45%; /* Pushes content exactly past the fixed visual pane */
+            padding: 6rem 5% 6rem 7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Typography & Structure Elements */
+        .header-section {
+            margin-bottom: 5rem;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .main-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .main-title em {
+            font-style: italic;
+            font-family: var(--font-serif);
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-primary);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin-top: 2rem;
+            font-weight: 300;
+        }
+
+        /* Dynamic Timeline Section without traditional box wrappers */
+        .events-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .timeline-node {
+            position: relative;
+        }
+
+        /* Custom alignment for the date metrics */
+        .date-badge {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: -1.5rem;
+            left: -7rem;
+            font-weight: 700;
+            width: 4rem;
+            text-align: right;
+        }
+
+        .event-heading {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .event-time {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 450px;
+        }
+
+        .event-details strong {
+            color: var(--text-primary);
+        }
+
+        /* Minimal Stark Interactive Button */
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .action-link::after {
+            content: ' →';
+            display: inline-block;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .action-link:hover {
+            color: var(--accent);
+        }
+
+        .action-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        .footer-tag {
+            margin-top: 3rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* RESPONSIVE BREAKPOINTS: Transforming the grid seamlessly for mobile devices */
+        @media (max-width: 968px) {
+            .split-layout {
+                flex-direction: column;
+            }
+            .visual-pane {
+                width: 100%;
+                height: 50vh;
+                position: relative;
+            }
+            .visual-pane::after {
+                background: linear-gradient(to bottom, transparent 60%, var(--bg-color));
+            }
+            .content-pane {
+                width: 100%;
+                margin-left: 0;
+                padding: 4rem 1.5rem;
+            }
+            .main-title {
+                font-size: 3.5rem;
+            }
+            .events-timeline {
+                margin-left: 4rem;
+            }
+            .date-badge {
+                left: -5.5rem;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-layout">
+        
+        <!-- LEFT: Fixed Hero Frame Viewport -->
+        <div class="visual-pane">
+            <img src="IMG-20260604-WA0012.jpg" alt="Sangavi & Adithya Portfolio">
+        </div>
+
+        <!-- RIGHT: Clean Asymmetrical Information Canvas -->
+        <div class="content-pane">
+            
+            <header class="header-section">
+                <div class="subtitle">The Celebration</div>
+                <h1 class="main-title">Sangavi<br><em>&</em> Adithya</h1>
+                <p class="intro-text">
+                    Because you have shared in our lives by your friendship and love, we invite you to join us as we exchange marriage vows.
+                </p>
+            </header>
+
+            <!-- Stripped Back Minimal Timeline Setup -->
+            <div class="events-timeline">
+                
+                <!-- WEDDING NODE -->
+                <div class="timeline-node">
+                    <div class="date-badge">08/27</div>
+                    <h2 class="event-heading">The Wedding</h2>
+                    <div class="event-time">August 27, 2024 • 10:30 AM</div>
+                    <p class="event-details">
+                        The auspicious ceremony takes place at the <strong>Abhimaani Convention Hall</strong>, located beautifully in Basaveshwara Nagar, Bengaluru.
+                    </p>
+                    <a href="https://maps.app.goo.gl/ciQ8Z8VhPYyLWQyq6?g_st=ac" target="_blank" class="action-link">Get Directions</a>
+                </div>
+
+                <!-- RECEPTION NODE -->
+                <div class="timeline-node">
+                    <div class="date-badge">RE</div>
+                    <h2 class="event-heading">The Reception</h2>
+                    <div class="event-time">[Date] • [Time Block]</div>
+                    <p class="event-details">
+                        Following the ceremony, celebrate our evening gala at <strong>[Insert Reception Venue]</strong>, located at [Insert Address].
+                    </p>
+                    <a href="#" target="_blank" class="action-link">Get Directions</a>
+                </div>
+
+            </div>
+
+            <footer style="margin-top: auto;">
+                <div class="footer-tag">#SangaviWedsAdithya</div>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>

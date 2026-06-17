@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Groom & Bride</title>
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4A5568;
+            --accent-color: #C5A880; /* Elegant Gold */
+            --bg-color: #FAFAF9;
+            --text-dark: #2D3748;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Split Screen Layout */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Left Side: Hero Image with Entry Fade Animation */
+        .image-section {
+            width: 45%;
+            height: 100vh;
+            position: relative;
+            background: url('IMG-20260604-WA0012.jpg') center/cover no-repeat;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+            animation: fadeInImage 1.5s ease-out forwards;
+        }
+
+        .image-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(250,250,249,0.1));
+        }
+
+        /* Right Side: Content Scroll */
+        .content-section {
+            width: 55%;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 4rem;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Custom Scrollbar */
+        .content-section::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content-section::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        /* Pure CSS Scroll Animations using Intersection Observer classes */
+        .animate-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .animate-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typography & Delays */
+        .header-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-align: center;
+            transition-delay: 0.2s;
+        }
+
+        .script-text {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 4.5rem;
+            color: var(--accent-color);
+            line-height: 1;
+            margin: 1rem 0;
+            text-align: center;
+            transition-delay: 0.4s;
+        }
+
+        .couple-names {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            text-align: center;
+            margin: 1.5rem 0;
+            line-height: 1.4;
+            transition-delay: 0.6s;
+        }
+
+        .ampersand {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            display: block;
+            color: var(--accent-color);
+            margin: 0.5rem 0;
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        .invitation-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 500px;
+            color: #718096;
+            margin-bottom: 3rem;
+            transition-delay: 0.8s;
+        }
+
+        /* Event Cards */
+        .event-card {
+            background: #ffffff;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+            border-radius: 4px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease, transform 1s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(197, 168, 128, 0.15);
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .event-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent-color);
+        }
+
+        .date {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            color: var(--text-dark);
+        }
+
+        .time {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .venue {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4A5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            background: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn-maps:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Interactive Contact / RSVP Section */
+        .contact-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            backdrop-filter: blur(4px);
+            animation: bounceIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) delay 1s both;
+        }
+
+        .contact-text {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .phone-btn {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(197, 168, 128, 0.4);
+        }
+
+        .phone-btn:hover {
+            transform: scale(1.1);
+            background-color: #b5966d;
+        }
+
+        /* SVG Phone Icon Styling */
+        .phone-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+        }
+
+        .footer-note {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin: 2rem 0 4rem 0;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        /* Keyframes Animations */
+        @keyframes fadeInImage {
+            from { opacity: 0; transform: scale(1.03); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; color: #d4af37; }
+        }
+
+        @keyframes bounceIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Mobile Viewport Fixes */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .image-section {
+                width: 100%;
+                height: 45vh;
+                min-height: 350px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .content-section {
+                width: 100%;
+                height: auto;
+                padding: 3rem 1.5rem;
+                overflow-y: visible;
+            }
+            .script-text {
+                font-size: 3.5rem;
+            }
+            .couple-names {
+                font-size: 2rem;
+            }
+            .contact-container {
+                bottom: 20px;
+                right: 20px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Left Side: Image Portion -->
+        <div class="image-section"></div>
+
+        <!-- Right Side: Content Portion -->
+        <div class="content-section">
+            
+            <span class="header-tag animate-fade">Save The Date</span>
+            <h1 class="script-text animate-fade">The Wedding of</h1>
+            
+            <div class="couple-names animate-fade">
+                GROOM NAME 
+                <span class="ampersand">&</span> 
+                BRIDE NAME
+            </div>
+
+            <p class="invitation-text animate-fade">
+                Together with their families, they joyfully invite you to share in their celebration of love, commitment, and beautiful beginnings.
+            </p>
+
+            <!-- CARD 1: MARRIAGE DETAILS -->
+            <div class="event-card animate-fade">
+                <h2 class="event-title">The Wedding</h2>
+                <p class="date">[Insert Marriage Date Here]</p>
+                <p class="time">At 4:00 in the Afternoon</p>
+                <p class="venue">
+                    [Insert Marriage Venue Name]<br>
+                    Street Address, City, State
+                </p>
+                <a href="#" target="_blank" class="btn-maps">View on Google Maps</a>
+            </div>
+
+            <!-- CARD 2: RECEPTION DETAILS -->
+            <div class="event-card animate-fade">
+                <h2 class="event-title">The Reception</h2>
+                <p class="date">[Insert Reception Date Here]</p>
+                <p class="time">At 7:00 in the Evening</p>
+                <p class="venue">
+                    [Insert Reception Venue Name]<br>
+                    Street Address, City, State
+                </p>
+                <a href="#" target="_blank" class="btn-maps">View on Google Maps</a>
+            </div>
+
+            <div class="footer-note animate-fade">Bless Us With Your Presence</div>
+            
+        </div>
+    </div>
+
+    <!-- Floating Contact/RSVP Button -->
+    <div class="contact-container">
+        <span class="contact-text">Contact / RSVP</span>
+        <a href="tel:9998887770" class="phone-btn" title="Call for Details">
+            <!-- Inline SVG Phone Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- JavaScript to trigger elegant slide-up animation as elements enter view -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const animatedElements = document.querySelectorAll('.animate-fade');
+            
+            const observerOptions = {
+                root: document.querySelector('.content-section'), // tracks inside scroll section
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Mobile fallback if scrolling body instead
+            const mobileObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            if(window.innerWidth <= 900) {
+                animatedElements.forEach(el => mobileObserver.observe(el));
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangavi & Adithya — Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #1C1A17;
+            --panel-bg: #26231F;
+            --text-light: #F0EDE8;
+            --text-dark: #A39E93;
+            --gold-accent: #C5A880;
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-light);
+            font-family: var(--sans);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* The Grid Framework */
+        .grid-canvas {
+            width: 100%;
+            max-width: 950px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background-color: var(--panel-bg);
+            box-shadow: 0 40px 90px rgba(0,0,0,0.5);
+            border: 1px solid rgba(197, 168, 128, 0.15);
+            position: relative;
+        }
+
+        /* Left Side: Dynamic Image Frame with Typographic Overlay */
+        .image-block {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        .image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+        .image-overlay-title {
+            position: absolute;
+            bottom: -1.5rem;
+            left: 2rem;
+            font-family: var(--serif);
+            font-size: 6rem;
+            line-height: 0.8;
+            color: rgba(240, 237, 232, 0.08);
+            font-weight: 300;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Right Side: Editorial Content Info */
+        .info-block {
+            padding: 4rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid rgba(197, 168, 128, 0.15);
+        }
+
+        .line-divider {
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold-accent);
+            margin: 1.5rem 0;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold-accent);
+            font-weight: 600;
+        }
+
+        .couple-names {
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+        .couple-names span {
+            font-style: italic;
+            font-size: 2.2rem;
+            color: var(--gold-accent);
+        }
+
+        .details-paragraph {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Structured Schedule Blocks */
+        .schedule-row {
+            border-top: 1px solid rgba(197, 168, 128, 0.15);
+            padding: 1.5rem 0;
+        }
+        .schedule-title {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+        .schedule-meta {
+            font-size: 0.85rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+        .schedule-loc {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--gold-accent);
+            padding-bottom: 2px;
+            transition: opacity 0.3s ease;
+        }
+        .map-btn:hover { opacity: 0.7; }
+
+        .hashtag {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--gold-accent);
+            margin-top: 2rem;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Flow */
+        @media (max-width: 850px) {
+            .grid-canvas { grid-template-columns: 1fr; }
+            .image-block { height: 400px; }
+            .image-overlay-title { font-size: 4rem; }
+            .info-block { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-canvas">
+        <div class="image-block">
+            <img src="IMG-20260604-WA0012.jpg" alt="Sangavi & Adithya">
+            <div class="image-overlay-title">S & A • 2024</div>
+        </div>
+        
+        <div class="info-block">
+            <div>
+                <div class="badge">The Wedding Invitation</div>
+                <h1 class="couple-names">Sangavi <span>&</span> Adithya</h1>
+                <div class="line-divider"></div>
+                <p class="details-paragraph">
+                    With joyous hearts, we request the honor of your presence to celebrate our union and new beginnings.
+                </p>
+            </div>
+
+            <div class="schedule-wrapper">
+                <!-- Event 1 -->
+                <div class="schedule-row">
+                    <h2 class="schedule-title">The Wedding Ceremony</h2>
+                    <div class="schedule-meta">AUG 27, 2024 — 10:30 AM</div>
+                    <p class="schedule-loc"><strong>Abhimaani Convention Hall</strong><br>Basaveshwara Nagar, Bengaluru</p>
+                    <a href="https://maps.app.goo.gl/ciQ8Z8VhPYyLWQyq6?g_st=ac" target="_blank" class="map-btn">Map Location</a>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="schedule-row">
+                    <h2 class="schedule-title">The Reception</h2>
+                    <div class="schedule-meta">[DATE] — [TIME]</div>
+                    <p class="schedule-loc"><strong>[Insert Venue]</strong><br>[Insert Location details]</p>
+                    <a href="#" class="map-btn">Map Location</a>
+                </div>
+            </div>
+
+            <div class="hashtag">#SangaviWedsAdithya</div>
+        </div>
+    </div>
+
+</body>
+</html>
