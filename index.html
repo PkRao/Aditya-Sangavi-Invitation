@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Concepts — Sangavi & Adithya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0B0F19;
+            --card-bg: #141B2D;
+            --text-main: #FFFFFF;
+            --text-muted: #8F9CAE;
+            --accent-glow: #3B82F6;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Presentation Title & Meta Header */
+        .portal-header {
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 4rem;
+        }
+
+        .client-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-glow);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .portal-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .portal-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Two Column Presentation Layout */
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Presentation Cards */
+        .design-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .design-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .concept-number {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .concept-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .concept-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            min-height: 4.5rem; /* Keeps cards uniform height */
+        }
+
+        /* Action Launch Buttons */
+        .launch-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .design-card:hover .launch-btn {
+            background-color: var(--accent-glow);
+            color: var(--text-main);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .design-card {
+                padding: 2.5rem 1.5rem;
+            }
+            .concept-description {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Client Presentation Header Frame -->
+    <header class="portal-header">
+        <span class="client-tag">Design Proposals</span>
+        <h1 class="portal-title">Sangavi & Adithya</h1>
+        <p class="portal-desc">
+            Please select a design concept below to review the interactive wedding invitation layouts.
+        </p>
+    </header>
+
+    <!-- Side-by-Side Launch Interface Split -->
+    <main class="options-container">
+        
+        <!-- DESIGN OPTION 1 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept One</div>
+                <h2 class="concept-name">Architectural Grid</h2>
+                <div class="concept-tags">
+                    <span class="tag">Minimalist</span>
+                    <span class="tag">Asymmetric</span>
+                    <span class="tag">Warm Tones</span>
+                </div>
+                <p class="concept-description">
+                    A sharp, asymmetric magazine-style layout using crisp linear borders, editorial typographic overlays, and structured content rows.
+                </p>
+            </div>
+            <a href="invitation8.html" class="launch-btn">View Design 1</a>
+        </div>
+
+        <!-- DESIGN OPTION 2 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Two</div>
+                <h2 class="concept-name">Cinematic Lookbook</h2>
+                <div class="concept-tags">
+                    <span class="tag">Immersive</span>
+                    <span class="tag">Dark Mode</span>
+                    <span class="tag">High-End</span>
+                </div>
+                <p class="concept-description">
+                    A striking absolute-layered layout utilizing backdrop blurs, dramatic text spacing, and high-fashion style aesthetic blocks.
+                </p>
+            </div>
+            <a href="index7.html" class="launch-btn">View Design 2</a>
+        </div>
+ <!-- DESIGN OPTION 3 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Three</div>
+                                     <br>
+     </div>
+            <a href="index6.html" class="launch-btn">View Design 3</a>
+        </div>
+ <!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Four</div>
+                                    <br>
+      </div>
+            <a href="index_old.html" class="launch-btn">View Design 4</a>
+        </div>
+<!-- DESIGN OPTION 5 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Five</div>
+                                     <br>
+     </div>
+            <a href="invitation5.html" class="launch-btn">View Design 5</a>
+        </div>
+<!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Six</div>
+                                       <br>
+   </div>
+            <a href="invitation4.html" class="launch-btn">View Design 6</a>
+        </div>
+<!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Seven</div>
+                                     <br>
+     </div>
+            <a href="invitation3.html" class="launch-btn">View Design 7</a>
+        </div>
+<!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Eight</div>
+                                     <br>
+     </div>
+            <a href="invitation2.html" class="launch-btn">View Design 8</a>
+        </div>
+<!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Nine</div>
+                                       <br>
+   </div>
+            <a href="text.html" class="launch-btn">View Design 9</a>
+        </div>
+<!-- DESIGN OPTION 4 CARD FRAME -->
+        <div class="design-card">
+            <div>
+                <div class="concept-number">Concept Ten</div>
+<br>
+                                          </div>
+            <a href="index_updated.html" class="launch-btn">View Design 10</a>
+        </div>
+    </main>
+
+</body>
+</html>
